@@ -39,7 +39,7 @@ public class MacroManager implements IManager {
     public void saveMacro() {
         File file = new File(ConfigManager.MISC_FOLDER, "macro.txt");
         try {
-            if (new File(ConfigManager.MISC_FOLDER).mkdirs()) {
+            if (ConfigManager.MISC_FOLDER.mkdirs()) {
                 file.createNewFile();
             }
         } catch (Exception ignored) {
