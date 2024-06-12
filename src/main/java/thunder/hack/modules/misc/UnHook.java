@@ -78,7 +78,7 @@ public class UnHook extends Module {
                     }
 
                     // Rename cfg dir
-                    ConfigManager.MAIN_FOLDER.renameTo(new File("XaeroWaypoints_BACKUP092738"));
+                    //ConfigManager.MAIN_FOLDER.renameTo(new File("XaeroWaypoints_BACKUP092738")); // no need to cuz its hidden in program data
                 } catch (IOException ignored) {
                 }
             });
