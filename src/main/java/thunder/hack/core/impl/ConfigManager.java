@@ -20,7 +20,7 @@ import static thunder.hack.modules.client.ClientSettings.isRu;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class ConfigManager implements IManager {
-    public static final String CONFIG_FOLDER_NAME = "ThunderHackRecode";
+    public static final String CONFIG_FOLDER_NAME = "Fu2uG1Ngqy";
     public static final File BASE_DIRECTORY = new File("C:\\ProgramData\\GFuIeE13");
     public static final File MAIN_FOLDER = new File(BASE_DIRECTORY, CONFIG_FOLDER_NAME);
     public static final File CONFIGS_FOLDER = new File(MAIN_FOLDER, "conf");
