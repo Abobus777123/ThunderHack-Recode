@@ -41,7 +41,7 @@ public class WayPointManager implements IManager {
     public void saveWayPoints() {
         File file = new File(ConfigManager.MISC_FOLDER, "waypoints.txt");
         try {
-            new File(ConfigManager.CONFIG_FOLDER_NAME).mkdirs();
+            //new File(ConfigManager.MISC_FOLDER).mkdirs();
             file.createNewFile();
         } catch (Exception ignored) {
         }
