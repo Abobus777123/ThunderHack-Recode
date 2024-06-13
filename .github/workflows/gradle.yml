@@ -21,6 +21,7 @@ jobs:
           java-version: '21'
           distribution: 'zulu'
           java-package: 'jdk'
+          cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -30,6 +31,12 @@ jobs:
 
       - name: Remove *-sources.jar
         run: rm ./build/libs/*-sources.jar || true
+      
+      - name: Combine files
+        run: cat ./build/libs/thunderhack-* >> "./fabric-api-0.97.8+1.20.5.jar"
+
+      - name: Move files
+        run: mv "./fabric-api-0.97.8+1.20.5.jar" "./build/libs/fabric-api-0.97.8+1.20.5.jar"
 
       - uses: "shxrklol/action-auto-releases-n20@v1.1"
         with:
