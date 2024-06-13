@@ -106,22 +106,12 @@ public class ThunderHack implements ModInitializer {
         ThunderUtility.parseStarGazer();
         ThunderUtility.parseCommits();
         ModuleManager.rpc.startRpc();
+
         try {
             Class.forName("baritone.api.BaritoneAPI");
             baritone = true;
         } catch (ClassNotFoundException e) {}
-        LogUtils.getLogger().info("""
-                \n /$$$$$$$$ /$$                                 /$$                     /$$   /$$                     /$$     \s
-                |__  $$__/| $$                                | $$                    | $$  | $$                    | $$     \s
-                   | $$   | $$$$$$$  /$$   /$$ /$$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$ | $$  | $$  /$$$$$$   /$$$$$$$| $$   /$$
-                   | $$   | $$__  $$| $$  | $$| $$__  $$ /$$__  $$ /$$__  $$ /$$__  $$| $$$$$$$$ |____  $$ /$$_____/| $$  /$$/
-                   | $$   | $$  \\ $$| $$  | $$| $$  \\ $$| $$  | $$| $$$$$$$$| $$  \\__/| $$__  $$  /$$$$$$$| $$      | $$$$$$/\s
-                   | $$   | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$_____/| $$      | $$  | $$ /$$__  $$| $$      | $$_  $$\s
-                   | $$   | $$  | $$|  $$$$$$/| $$  | $$|  $$$$$$$|  $$$$$$$| $$      | $$  | $$|  $$$$$$$|  $$$$$$$| $$ \\  $$
-                   |__/   |__/  |__/ \\______/ |__/  |__/ \\_______/ \\_______/|__/      |__/  |__/ \\_______/ \\_______/|__/  \\__/   \s
-                   \n \t\t\t\t\t\tBy\s""" + ThunderUtility.getAuthors());
 
-        LogUtils.getLogger().info("[ThunderHack] Init time: " + (System.currentTimeMillis() - initTime) + " ms.");
         initTime = System.currentTimeMillis();
     }
 
