@@ -88,11 +88,8 @@ public class FTHelper extends Module {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
                 int input = Integer.parseInt(s.replaceAll("[\\D]", ""));
-                int numberOfMinutes;
-                int numberOfSeconds;
-                
-                numberOfMinutes = ((input % 86400) % 3600) / 60
-                numberOfSeconds = ((input % 86400) % 3600) % 60;
+                int numberOfMinutes = ((input % 86400) % 3600) / 60;
+                int numberOfSeconds = ((input % 86400) % 3600) % 60;
 
                 sendMessage(isRu() ? String.valueOf(numberOfMinutes) + " мин. " + String.valueOf(numberOfSeconds) + "сек." : String.valueOf(numberOfMinutes) + " min. " + String.valueOf(numberOfSeconds) + "sec.");
             }
