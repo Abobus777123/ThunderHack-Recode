@@ -94,7 +94,7 @@ public class FTHelper extends Module {
                     long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
                     numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
             
-                    sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + "сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + "sec");
+                    sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + " сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + " sec");
                 }
             }
         }
