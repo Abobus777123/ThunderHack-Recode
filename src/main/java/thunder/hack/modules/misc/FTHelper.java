@@ -90,7 +90,7 @@ public class FTHelper extends Module {
             if (content.contains("ивента")) {
                 int numberOfSeconds = Integer.parseInt(content.replaceAll("[\\D]", ""));
                 long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
-                numberOfSeconds -= TimeUnit.MINUTES.toSeconds(minutes);
+                numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
             
 
                 sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + "сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + "sec");
