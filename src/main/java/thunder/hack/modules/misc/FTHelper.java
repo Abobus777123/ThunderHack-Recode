@@ -87,7 +87,7 @@ public class FTHelper extends Module {
         if(event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
-                int input = Integer.parseInt(s.replaceAll("[\\D]", ""));
+                int input = Integer.parseInt(content.replaceAll("[\\D]", ""));
                 int numberOfMinutes = ((input % 86400) % 3600) / 60;
                 int numberOfSeconds = ((input % 86400) % 3600) % 60;
 
