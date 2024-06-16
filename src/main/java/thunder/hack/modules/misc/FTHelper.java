@@ -47,6 +47,7 @@ public class FTHelper extends Module {
     public final Setting<Boolean> aucHelper = new Setting<>("AucHelper", true);
     private final Setting<GroupBy> groupBy = new Setting<>("GroupBy", GroupBy.ItemType, v-> aucHelper.getValue());
     private final Setting<Integer> contrast = new Setting<>("Contrast", 4,1,15, v-> aucHelper.getValue());
+    public final Setting<Boolean> eventdelay = new Setting<>("MystDelayHelper", true);
 
     private enum GroupBy {
         Name, ItemType
@@ -81,6 +82,19 @@ public class FTHelper extends Module {
             if (content.contains("спек") || content.contains("ызус") || content.contains("spec") || content.contains("spek") || content.contains("ызул")) {
                 String name = ThunderUtility.solveName(pac.content().getString());
                 ThunderHack.notificationManager.publicity("SpekNotification", isRu() ? name + " хочет чтобы за ним проследили" : name + " wants to be followed", 3, Notification.Type.WARNING);
+            }
+        }
+        if(event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
+            String content = pac.content().getString().toLowerCase();
+            if (content.contains("ивента")) {
+                int input = Integer.parseInt(s.replaceAll("[\\D]", ""));
+                int numberOfMinutes;
+                int numberOfSeconds;
+                
+                numberOfMinutes = ((input % 86400) % 3600) / 60
+                numberOfSeconds = ((input % 86400) % 3600) % 60;
+
+                sendMessage(isRu() ? String.valueOf(numberOfMinutes) + " мин. " + String.valueOf(numberOfSeconds) + "сек." : String.valueOf(numberOfMinutes) + " min. " + String.valueOf(numberOfSeconds) + "sec.");
             }
         }
     }
