@@ -87,11 +87,12 @@ public class FTHelper extends Module {
         if(event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
-                int input = Integer.parseInt(content.replaceAll("[\\D]", ""));
-                int numberOfMinutes = ((input % 86400) % 3600) / 60;
-                int numberOfSeconds = ((input % 86400) % 3600) % 60;
+                int numberOfSeconds = Integer.parseInt(content.replaceAll("[\\D]", ""));
+                long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
+                numberOfSeconds -= TimeUnit.MINUTES.toSeconds(minutes);
+            
 
-                sendMessage(isRu() ? String.valueOf(numberOfMinutes) + " мин. " + String.valueOf(numberOfSeconds) + "сек." : String.valueOf(numberOfMinutes) + " min. " + String.valueOf(numberOfSeconds) + "sec.");
+                sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + "сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + "sec");
             }
         }
     }
