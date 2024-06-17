@@ -93,10 +93,21 @@ public class FTHelper extends Module {
                 str = str.substring(1, str.length());
                 if(str != null && !str.trim().isEmpty()) {
                     int numberOfSeconds = Integer.parseInt(str);
-                    sendMessage(String.valueOf(numberOfSeconds) + " " + str);
                     long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
                     numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
-                    sendMessage(String.valueOf(numberOfSeconds) + " " + str);
+                    sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + " сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + " sec");
+                }
+            }
+        }
+        if (event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
+            String content = pac.content().getString().toLowerCase();
+            if (content.contains("ивента")) {
+                String str = content.replaceAll("[\\D]", "");
+                str = str.substring(1, str.length());
+                if(str != null && !str.trim().isEmpty()) {
+                    int numberOfSeconds = Integer.parseInt(str);
+                    long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
+                    numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
                     sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + " сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + " sec");
                 }
             }
