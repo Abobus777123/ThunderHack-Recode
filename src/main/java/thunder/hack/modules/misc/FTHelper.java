@@ -99,16 +99,18 @@ public class FTHelper extends Module {
                 }
             }
         }
-        if (event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
+        if (event.getPacket() instanceof GameMessageS2CPacket pac && mystgps.getValue()) {
             String content = pac.content().getString().toLowerCase();
-            if (content.contains("ивента")) {
-                String str = content.replaceAll("[\\D]", "");
-                if(str != null && !str.trim().isEmpty() && str.length() > 1) {
-                    str = str.substring(1, str.length());
-                    int numberOfSeconds = Integer.parseInt(str);
-                    long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
-                    numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
-                    sendMessage(isRu() ? "До ивента: " + String.valueOf(numberOfMinutes) + " мин " + String.valueOf(numberOfSeconds) + " сек" : "Until the event: " + String.valueOf(numberOfMinutes) + " min " + String.valueOf(numberOfSeconds) + " sec");
+            if (content.contains("появился на координатах") && content.length() > 24) {
+                content = str.substring(24, content.length());
+                if (content != null && !content.trim().isEmpty()) {
+                    String[] coords = content.split("\\s+");
+                    int x, z;
+
+                    x = Integer.valueOf(coords[0]);
+                    z = Integer.valueOf(coords[2]);
+
+                    ThunderHack.gps_position = new BlockPos(x, 0, z);
                 }
             }
         }
