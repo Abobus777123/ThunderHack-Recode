@@ -49,6 +49,7 @@ public class FTHelper extends Module {
     private final Setting<GroupBy> groupBy = new Setting<>("GroupBy", GroupBy.ItemType, v-> aucHelper.getValue());
     private final Setting<Integer> contrast = new Setting<>("Contrast", 4,1,15, v-> aucHelper.getValue());
     public final Setting<Boolean> eventdelay = new Setting<>("MystDelayHelper", true);
+    public final Setting<Boolean> mystgps = new Setting<>("AutoMystGPS", true);
 
     private enum GroupBy {
         Name, ItemType
@@ -85,10 +86,10 @@ public class FTHelper extends Module {
                 ThunderHack.notificationManager.publicity("SpekNotification", isRu() ? name + " хочет чтобы за ним проследили" : name + " wants to be followed", 3, Notification.Type.WARNING);
             }
         }
-        if(event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
+        if (event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
-                String str = content.replaceAll("[\\D]", "");
+                String str = content.replaceAll("[\\D]", "").substring(1, str.length());
                 if(str != null && !str.trim().isEmpty()) {
                     int numberOfSeconds = Integer.parseInt(str);
                     sendMessage(String.valueOf(numberOfSeconds) + " " + str);
