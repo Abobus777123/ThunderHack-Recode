@@ -91,7 +91,7 @@ public class FTHelper extends Module {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
                 String str = content.replaceAll("[\\D]", "");
-                if (str.length() < 1) {
+                if (str.length() > 1) {
                     str = str.substring(1, str.length());
                     if (str != null && !str.trim().isEmpty()) {
                         int numberOfSeconds = Integer.parseInt(str);
