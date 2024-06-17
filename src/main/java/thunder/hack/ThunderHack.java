@@ -111,7 +111,7 @@ public class ThunderHack implements ModInitializer {
             Class.forName("baritone.api.BaritoneAPI");
             baritone = true;
         } catch (ClassNotFoundException e) {}
-
+        
         initTime = System.currentTimeMillis();
     }
 
