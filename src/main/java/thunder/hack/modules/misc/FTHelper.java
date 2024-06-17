@@ -103,8 +103,8 @@ public class FTHelper extends Module {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
                 String str = content.replaceAll("[\\D]", "");
-                str = str.substring(1, str.length());
-                if(str != null && !str.trim().isEmpty()) {
+                if(str != null && !str.trim().isEmpty() && str.length() > 1) {
+                    str = str.substring(1, str.length());
                     int numberOfSeconds = Integer.parseInt(str);
                     long numberOfMinutes = TimeUnit.SECONDS.toMinutes(numberOfSeconds);
                     numberOfSeconds -= TimeUnit.MINUTES.toSeconds(numberOfMinutes);
