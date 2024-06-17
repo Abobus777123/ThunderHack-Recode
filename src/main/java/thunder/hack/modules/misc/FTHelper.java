@@ -25,6 +25,7 @@ import thunder.hack.utility.Timer;
 import thunder.hack.utility.player.InventoryUtility;
 import thunder.hack.utility.player.SearchInvResult;
 import thunder.hack.utility.render.Render2DEngine;
+import net.minecraft.util.math.BlockPos;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -102,7 +103,7 @@ public class FTHelper extends Module {
         if (event.getPacket() instanceof GameMessageS2CPacket pac && mystgps.getValue()) {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("появился на координатах") && content.length() > 24) {
-                content = str.substring(24, content.length());
+                content = content.substring(24, content.length());
                 if (content != null && !content.trim().isEmpty()) {
                     String[] coords = content.split("\\s+");
                     int x, z;
