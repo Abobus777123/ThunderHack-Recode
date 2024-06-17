@@ -89,7 +89,8 @@ public class FTHelper extends Module {
         if (event.getPacket() instanceof GameMessageS2CPacket pac && eventdelay.getValue()) {
             String content = pac.content().getString().toLowerCase();
             if (content.contains("ивента")) {
-                String str = content.replaceAll("[\\D]", "").substring(1, str.length());
+                String str = content.replaceAll("[\\D]", "");
+                str = str.substring(1, str.length());
                 if(str != null && !str.trim().isEmpty()) {
                     int numberOfSeconds = Integer.parseInt(str);
                     sendMessage(String.valueOf(numberOfSeconds) + " " + str);
